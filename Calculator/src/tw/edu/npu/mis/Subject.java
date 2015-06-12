@@ -25,31 +25,43 @@
  */
 package tw.edu.npu.mis;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author Mac
  */
-
-public class AlternaviteView extends View implements Observer{
-
-     public AlternaviteView(String name, Window window, Model model) {
-        super(name, window, model);
-    }
-   
-    @Override
-    public void onDraw() {
-        String s;
-        s = mModel.getData();
-        StringBuffer sb = new StringBuffer();
-        sb.append(s);
-        sb.reverse();
-        System.out.println("Alternavite (" + mName + "): " + sb);
+public class Subject {
+    
+    private ArrayList<Observer> Obsvlist = new ArrayList<Observer>(); 
+    
+    /*
+    *add
+    */
+    public void Attach(Observer o)
+    {
+        Obsvlist.add(o);
     }
     
-   
-
+    /*
+    *remove
+    */
+    public void Detach(Observer o)
+    {
+        Obsvlist.remove(o);
+    }
     
-
+    /*
+    *notify
+    */
+    
+    public void Notify()
+    {
+        for (Observer o : Obsvlist) {
+                o.Update();
+            }
+    }
+    
+    
+    
 }
-
-    

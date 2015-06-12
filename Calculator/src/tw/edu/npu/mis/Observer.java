@@ -29,27 +29,8 @@ package tw.edu.npu.mis;
  *
  * @author Mac
  */
-
-public class AlternaviteView extends View implements Observer{
-
-     public AlternaviteView(String name, Window window, Model model) {
-        super(name, window, model);
-    }
-   
-    @Override
-    public void onDraw() {
-        String s;
-        s = mModel.getData();
-        StringBuffer sb = new StringBuffer();
-        sb.append(s);
-        sb.reverse();
-        System.out.println("Alternavite (" + mName + "): " + sb);
-    }
+public interface Observer {
     
-   
-
+    void Update();
     
-
 }
-
-    
